@@ -91,7 +91,6 @@ const pickNumItems = (arr, num) => {
 const drawBoard = () => {
   const flags = [
     "argentina",
-    "belgium",
     "brazil",
     "france",
     "germany",
@@ -100,6 +99,7 @@ const drawBoard = () => {
     "netherlands",
     "portugal",
     "spain",
+    "sweden",
     "uk",
     "usa",
   ];
