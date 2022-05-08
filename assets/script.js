@@ -180,8 +180,7 @@ wonBtn.addEventListener("click", () => {
   gameObj.flippedCards = 0;
   gameObj.totalFlips = 0;
   gameObj.totalTime = 0;
-  gameObj.loop = time();
-
+  time();
   gameBoard.innerHTML = "";
   drawBoard();
 });
