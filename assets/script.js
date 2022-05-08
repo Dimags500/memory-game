@@ -38,8 +38,18 @@ landingBtn.addEventListener("click", () => {
       break;
     }
   }
+
+  time();
   drawBoard();
 });
+
+function time() {
+  gameObj.loop = setInterval(() => {
+    gameObj.totalTime++;
+    moveCounter.innerText = `Total Moves: ${gameObj.totalFlips}`;
+    timer.innerText = `Time Elapsed: ${gameObj.totalTime} Seconds`;
+  }, 1000);
+}
 
 themeButton.addEventListener("click", (e) => {
   const cardFront = document.querySelectorAll(".card-front");
@@ -148,6 +158,13 @@ const flipCard = (card) => {
     setTimeout(() => {
       flipBackCards();
     }, 1000);
+
+    if (!document.querySelectorAll(".card:not(.flipped)").length) {
+      won.style.width = "100%";
+      clearInterval(gameObj.loop);
+      moveCounterEnd.innerText = `Total Moves: ${gameObj.totalFlips}`;
+      timerEnd.innerText = `Time Elapsed: ${gameObj.totalTime} Seconds`;
+    }
   }
 };
 const flipBackCards = () => {
@@ -156,3 +173,15 @@ const flipBackCards = () => {
   });
   gameObj.flippedCards = 0;
 };
+
+wonBtn.addEventListener("click", () => {
+  won.style.width = "0%";
+
+  gameObj.flippedCards = 0;
+  gameObj.totalFlips = 0;
+  gameObj.totalTime = 0;
+  gameObj.loop = time();
+
+  gameBoard.innerHTML = "";
+  drawBoard();
+});
