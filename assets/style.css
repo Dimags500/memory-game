@@ -42,21 +42,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
   );
   width: 100%;
   overflow: hidden;
 }
 .game-container__dark {
-  background: rgb(254, 0, 0);
-  background: linear-gradient(
-    0deg,
-    rgba(254, 0, 0, 1) 0%,
-    rgba(25, 0, 255, 1) 100%
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
   );
 }
 .landing-page__btn {
