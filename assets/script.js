@@ -21,6 +21,7 @@ const gameObj = {
   loop: null,
 };
 
+//* Landing page button - starts the game (drawing the cards board according to the desired difficulty) and sets the timer and move counter.
 landingBtn.addEventListener("click", () => {
   landingPage.classList.toggle("display-none");
   container.classList.toggle("display-none");
@@ -43,6 +44,7 @@ landingBtn.addEventListener("click", () => {
   drawBoard();
 });
 
+//* Sets the interval for the move counter and timer to update every second.
 function time() {
   gameObj.loop = setInterval(() => {
     gameObj.totalTime++;
@@ -51,6 +53,7 @@ function time() {
   }, 1000);
 }
 
+//* Theme button - changes the theme from light mode to dark mode and back.
 themeButton.addEventListener("click", (e) => {
   const cardFront = document.querySelectorAll(".card-front");
   if (e.target.textContent === "Dark Mode") {
@@ -72,12 +75,14 @@ themeButton.addEventListener("click", (e) => {
   }
 });
 
+//* Returns random int from min to max-1.
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+//* Returns new array with the same values as the original array but in a random order.
 const randomizeArray = (arr) => {
   let newArr = [];
   while (arr.length > 0) {
@@ -88,6 +93,7 @@ const randomizeArray = (arr) => {
   return newArr;
 };
 
+//* Return x amount of items randomly from the original array.
 const pickNumItems = (arr, num) => {
   let newArr = [];
   while (newArr.length < num) {
@@ -98,6 +104,7 @@ const pickNumItems = (arr, num) => {
   return newArr;
 };
 
+//* Draws the game board and creates the div elements of the cards.
 const drawBoard = () => {
   const flags = [
     "argentina",
@@ -128,6 +135,7 @@ const drawBoard = () => {
   }
 };
 
+//* Event listener for each card in the board.
 gameBoard.addEventListener("click", (e) => {
   const eventTarget = e.target;
   const eventParent = eventTarget.parentElement;
@@ -139,6 +147,7 @@ gameBoard.addEventListener("click", (e) => {
   }
 });
 
+//* Flips the card and check for a match between last 2 flipped cards. If there are no more cards to be flipped, ends the game.
 const flipCard = (card) => {
   gameObj.flippedCards++;
   if (gameObj.flippedCards <= 2) {
@@ -167,6 +176,8 @@ const flipCard = (card) => {
     }
   }
 };
+
+//* Flip back cards that weren't a match.
 const flipBackCards = () => {
   document.querySelectorAll(".card:not(.matched)").forEach((card) => {
     card.classList.remove("flipped");
@@ -174,6 +185,7 @@ const flipBackCards = () => {
   gameObj.flippedCards = 0;
 };
 
+//* Won game button, starts a new game with a clean timer and move counter and a newly generated game board.
 wonBtn.addEventListener("click", () => {
   won.style.width = "0%";
 
